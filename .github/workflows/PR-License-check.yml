@@ -38,4 +38,4 @@ jobs:
     #     example: ${{ needs.scan_examples.outputs.example }}
     steps:
       - name: Build example in cmake
-        run: echo ${{ needs.scan_examples.outputs.example }}
+        run: echo ${{needs.scan_examples.outputs.example}}
