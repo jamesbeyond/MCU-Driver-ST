@@ -28,9 +28,7 @@ jobs:
 
     - name: Scan example folder
       id: stepscan
-      run: |
-        echo "::set-output name=test::hello"
-        ls sdfx_st/examples
+      run: echo "::set-output name=test::hello"
 
   build_examples:
     runs-on: ubuntu-latest
