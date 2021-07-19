@@ -36,9 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: scan_examples
     name: Build Examples
-    # strategy: 
-    #   matrix:
-    #     example: ${{ needs.scan_examples.outputs.example }}
+    strategy: 
+      matrix:
+        example: ${{ needs.scan_examples.outputs.example }}
     steps:
       - name: Build example in cmake
-        run: echo ${{needs.scan_examples.outputs.example}}
+        run: echo ${{ matrix.example }}
