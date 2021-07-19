@@ -30,7 +30,7 @@ jobs:
       id: stepscan
       run: |
         ls -al sdfx_st/examples
-        echo "::set-output name=example::[gpio, spi]"
+        echo "::set-output name=example::['gpio', 'spi']"
 
   build_examples:
     runs-on: ubuntu-latest
