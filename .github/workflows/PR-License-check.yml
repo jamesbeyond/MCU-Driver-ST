@@ -21,14 +21,16 @@ jobs:
     runs-on: ubuntu-latest
     name: Scan Examples
     outputs:
-      example: ${{ steps.stepscan.outputs.test }}
+      example: ${{ steps.stepscan.outputs.example }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v1
 
     - name: Scan example folder
       id: stepscan
-      run: echo "::set-output name=test::hello"
+      run: |
+        ls -al sdfx_st/examples
+        echo "::set-output name=example::gpio"
 
   build_examples:
     runs-on: ubuntu-latest
