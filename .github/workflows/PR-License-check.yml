@@ -38,7 +38,7 @@ jobs:
     name: Build Examples
     strategy: 
       matrix:
-        example: ${{ needs.scan_examples.outputs.example }}
+        example: [2, 3]
     steps:
       - name: Build example in cmake
         run: echo ${{ matrix.example }}
