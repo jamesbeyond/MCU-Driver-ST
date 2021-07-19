@@ -17,25 +17,19 @@ name: PR-Check Build Examples
 on: [pull_request]
 
 jobs:
-  scan_examples:
+  job1:
     runs-on: ubuntu-latest
-    name: Scan Examples
+    # Map a step output to a job output
     outputs:
-      example: ${{ steps.stepscan.outputs.test }}
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v1
-
-    - name: Scan example folder
-      id: stepscan
-      run: echo "::set-output name=test::hello"
-
-  build_examples:
+      - id: step1
+        run: echo "::set-output name=test::hello"
+      - id: step2
+        run: echo "::set-output name=test::world"
+  job2:
     runs-on: ubuntu-latest
-    name: Build Examples
-    # strategy: 
-    #   matrix:
-    #     example: ${{ needs.scan_examples.outputs.example }}
+    needs: job1
     steps:
-      - name: Build example in cmake
-        run: echo ${{needs.scan_examples.outputs.example}}
+      - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
