@@ -30,8 +30,8 @@ jobs:
       id: stepscan
       run: |
         cd sdfx_st/examples
-        ls -d */ | sed s#/##g | jq -R -s -c 'split("\n")[:-1]'
-        echo "::set-output name=example::['gpio', 'spi']"
+        JSON_ARRAY=$(ls -d */ | sed s#/##g | jq -R -s -c 'split("\n")[:-1]')
+        echo "::set-output name=example::${JSON_ARRAY}"
 
   build_examples:
     runs-on: ubuntu-latest
